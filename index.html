@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Emoji Fighter</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Permanent+Marker&family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+        body {
+            display: grid;
+            place-items: center;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Permanent Marker', cursive;
+            background: linear-gradient(white, gray);
+            height: 100vh;
+            color: #e98a1d;
+        }
+
+        h1 {
+            padding: 5rem 0 0 0;
+            text-shadow: 0px 3px 0px black;
+            line-height: 24px;
+            transform: rotate(-10deg);
+        }
+
+        #stage {
+            width: 100%;
+            font-size: 50px;
+            margin: 0;
+        }
+
+        button {
+            margin: 0 0 15rem 0;
+            cursor: pointer;
+            border: 0;
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: #e98a1d;
+            color: white;
+            font-family: inherit;
+            font-size: 20px
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Emoji<br>Fighter</h1>
+    <div id="stage"></div>
+    <button id="fightButton">Pick Fighters!</button>
+
+    <script type="module">
+
+        import * as emoji from "/index.mjs";
+        let fightButton = document.getElementById('fightButton');
+        let stage = document.getElementById('stage');
+
+        fightButton.addEventListener('click', () => {
+
+            let emojis = emoji.all();
+            let emojiLength = emojis.length;
+
+
+            let r1 = Math.floor(Math.random() * emojiLength)
+            let r2 = Math.floor(Math.random() * emojiLength)
+            let storeEmoji = emojis[r1] + ' VS ' + emojis[r2];
+            stage.innerHTML = storeEmoji
+
+        })
+
+    </script>
+
+</body>
+
+</html>
